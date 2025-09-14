@@ -45,3 +45,47 @@ npm start
 ## Customization
 - Modify `index.html` to change pet appearance
 - Adjust window size in `main.js` constructor
+
+
+## Packaging (macOS DMG)
+
+### 1. Install Packager
+```bash
+npm install electron-packager --save-dev
+```
+
+### 2. Add Build Script to package.json
+```json
+"scripts": {
+  "start": "electron .",
+  "build": "electron-packager . --platform=darwin --format=DMG --electron-version=38.1.0"
+}
+```
+
+### 3. Run Build Command
+```bash
+npm run build
+```
+
+### 4. Output Location
+The DMG file will be created in:
+```bash
+/Users/alice/Code/electronTest/electronTest-darwin-arm64
+```
+
+## Common Issues
+
+### ❌ Electron Version Error
+**Error Message:**
+```
+Unable to determine Electron version. Please specify an Electron version
+```
+
+**Solution:**
+Always manually specify the version in your build command:
+```bash
+--electron-version=38.1.0
+```
+
+### 📦 Dependency Warnings
+You may see warnings about deprecated packages - these are non-critical and won't affect the basic functionality of your DMG build.
